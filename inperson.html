@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實體面試研究情境</title>
+    <style>
+        body { font-family: 'Microsoft JhengHei', sans-serif; text-align: center; background: #f0f2f5; padding: 20px; color: #333; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        .image-box { margin: 20px 0; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; background: #fff; }
+        .image-box img { width: 100%; height: auto; display: block; }
+        .video-box { margin-top: 25px; border: 5px solid #222; border-radius: 12px; background: #000; overflow: hidden; line-height: 0; }
+        video { width: 100%; height: auto; display: block; }
+        button { padding: 15px 35px; font-size: 18px; cursor: pointer; background: #28a745; color: white; border: none; border-radius: 50px; transition: 0.3s; font-weight: bold; margin-top: 20px; }
+        button:hover { background: #218838; transform: scale(1.05); }
+        .alert-box { background: #fff3cd; color: #856404; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ffeeba; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="notice-page">
+        <div class="alert-box">⚠️ 您目前處於「實體面試」情境</div>
+        <h2>【 第二階段：閱讀面試通知 】</h2>
+        <p>請仔細閱讀以下通知內容，隨後將進入面試情境。</p>
+        <div class="image-box">
+            <img src="3pic.jpg" alt="實體面試通知書">
+        </div>
+        <button style="background: #ffc107; color: #000;" onclick="showVideo()">我已閱讀完畢，進入面試</button>
+    </div>
+
+    <div class="container hidden" id="interview-page">
+        <div class="alert-box">⚠️ 提醒：您剛才閱讀的是「實體面試」通知，請專注觀看以下影片。</div>
+        <h2>【情境A：實體面試模式】</h2>
+        <div class="video-box" id="video-container"></div>
+        <button style="background: #007bff;" onclick="goToSurvey()">我已觀看完畢，前往填寫問卷</button>
+    </div>
+
+    <script>
+        function showVideo() {
+            document.getElementById('notice-page').classList.add('hidden');
+            document.getElementById('interview-page').classList.remove('hidden');
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = `
+                <video id="interviewVideo" controls autoplay playsinline>
+                    <source src="1video.mp4" type="video/mp4">
+                    您的瀏覽器不支援播放，請更換瀏覽器。
+                </video>
+            `;
+        }
+        function goToSurvey() {
+            // 此處請更換為您的第二階段問卷連結
+            window.location.href = "https://forms.gle/9tcDcCxo2BNmK5mZ9";
+        }
+    </script>
+</body>
+</html>
